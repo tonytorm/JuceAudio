@@ -71,6 +71,6 @@ void MainComponent::menuItemSelected (int menuItemID, int topLevelMenuIndex)
 void MainComponent::sliderValueChanged(Slider* slider)
 {
     if (slider == &gainSlider)
-        audio.setGain(gainSlider.getValue()/10);
+        audio.sineOsc.setGain(gainSlider.getValue()/10);
         
 }

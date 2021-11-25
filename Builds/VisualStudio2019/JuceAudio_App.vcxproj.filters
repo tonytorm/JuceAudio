@@ -8,9 +8,6 @@
     <Filter Include="JuceAudio\Source\ui">
       <UniqueIdentifier>{BB153FE2-DAD9-241E-6578-94090B7ACF26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="JuceAudio\Source\SineSynth">
-      <UniqueIdentifier>{7AE78EC6-B0CC-7B2E-54A5-4F089C5D54CB}</UniqueIdentifier>
-    </Filter>
     <Filter Include="JuceAudio\Source">
       <UniqueIdentifier>{A4EDE67F-57BE-A6E8-0EFE-BE5B6CA16EF0}</UniqueIdentifier>
     </Filter>
@@ -454,11 +451,11 @@
     <ClCompile Include="..\..\Source\audio\Audio.cpp">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\audio\SineOsc.cpp">
+      <Filter>JuceAudio\Source\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ui\MainComponent.cpp">
       <Filter>JuceAudio\Source\ui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SineSynth.cpp">
-      <Filter>JuceAudio\Source\SineSynth</Filter>
     </ClCompile>
     <ClCompile Include="C:\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>JUCE Modules\juce_audio_basics\buffers</Filter>
@@ -2550,11 +2547,11 @@
     <ClInclude Include="..\..\Source\audio\Audio.h">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\audio\SineOsc.h">
+      <Filter>JuceAudio\Source\audio</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ui\MainComponent.h">
       <Filter>JuceAudio\Source\ui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SineSynth.h">
-      <Filter>JuceAudio\Source\SineSynth</Filter>
     </ClInclude>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>

@@ -23,8 +23,7 @@ Audio::Audio()
     if ( ! errorMessage.isEmpty())
         DBG (errorMessage);
     audioDeviceManager.addAudioCallback (this);
-    gainS = 0;
-    noteInHertz = 0;
+    
 }
 
 Audio::~Audio()
@@ -51,7 +50,8 @@ void Audio::audioDeviceIOCallback (const float** inputChannelData,
     //All audio processing is done here
     const float* inL = inputChannelData[0];
     
-    phaseIncrement = (MathConstants<float>::twoPi * noteInHertz) / sampleRate;
+    sineOsc.handlePhaseIncrement(noteInHertz);
+    
 
     float *outL = outputChannelData[0];
     float *outR = outputChannelData[1];
@@ -59,16 +59,13 @@ void Audio::audioDeviceIOCallback (const float** inputChannelData,
     while(numSamples--)
     {
         
-        phasePosition += phaseIncrement.load();
+      
         
-        if (phasePosition > MathConstants<float>::twoPi)
-            phasePosition -= MathConstants<float>::twoPi;
         
-        sineOut = std::sin(phasePosition);
         
         //auto output = *inL;
-        *outL = sineOut * gainS;
-        *outR = sineOut * gainS;
+        *outL = sineOsc.nextSample() * sineOsc.getGain();
+        *outR = sineOsc.nextSample() * sineOsc.getGain();
         
         inL++;
         outL++;
@@ -80,7 +77,7 @@ void Audio::audioDeviceIOCallback (const float** inputChannelData,
 
 void Audio::audioDeviceAboutToStart (AudioIODevice* device)
 {
-    sampleRate = device->getCurrentSampleRate();
+    sineOsc.getSampleRate(device->getCurrentSampleRate());
     
 }
 
@@ -89,7 +86,4 @@ void Audio::audioDeviceStopped()
 
 }
 
-void Audio::setGain(float gainControl)
-{
-     gainS = gainControl;
-}
+

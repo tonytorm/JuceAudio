@@ -11,6 +11,7 @@
 
 #include <JuceHeader.h>
 #include <cmath>
+#include "SineOscillator.hpp"
 
 /** Class containing all audio processes */
 
@@ -36,15 +37,12 @@ public:
                                 int numSamples) override;
     void audioDeviceAboutToStart (AudioIODevice* device) override;
     void audioDeviceStopped() override;
+   
     
-    void setGain(float gainControl);
+    SineOscillator sineOsc;
 private:
     AudioDeviceManager audioDeviceManager;
-    std::atomic<float> gainS;
-    std::atomic<float> sampleRate = 44100.f;
-    std::atomic<float> phaseIncrement = 0.f;
-    float phasePosition = 0.f;
-    float sineOut;
+    
     float noteInHertz;
     
 };
