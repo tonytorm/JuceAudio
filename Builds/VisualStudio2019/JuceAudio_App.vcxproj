@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
     <ClCompile Include="..\..\Source\audio\Audio.cpp"/>
-    <ClCompile Include="..\..\Source\audio\SineOsc.cpp"/>
+    <ClCompile Include="..\..\Source\audio\SineOscillator.cpp"/>
     <ClCompile Include="..\..\Source\ui\MainComponent.cpp"/>
     <ClCompile Include="C:\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
@@ -2088,7 +2088,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\audio\Audio.h"/>
-    <ClInclude Include="..\..\Source\audio\SineOsc.h"/>
+    <ClInclude Include="..\..\Source\audio\SineOscillator.hpp"/>
     <ClInclude Include="..\..\Source\ui\MainComponent.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="C:\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>

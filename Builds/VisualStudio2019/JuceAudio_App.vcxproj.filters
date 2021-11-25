@@ -451,7 +451,7 @@
     <ClCompile Include="..\..\Source\audio\Audio.cpp">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\audio\SineOsc.cpp">
+    <ClCompile Include="..\..\Source\audio\SineOscillator.cpp">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ui\MainComponent.cpp">
@@ -2547,7 +2547,7 @@
     <ClInclude Include="..\..\Source\audio\Audio.h">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\audio\SineOsc.h">
+    <ClInclude Include="..\..\Source\audio\SineOscillator.hpp">
       <Filter>JuceAudio\Source\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ui\MainComponent.h">

@@ -14,7 +14,7 @@
 class SineOscillator
 {
 public:
-   
+ 
     float nextSample();
     void setFrequency(float);
     void setGain(float);
@@ -28,5 +28,5 @@ private:
     std::atomic<float> phaseIncrement = 0.f;
     float phasePosition = 0.f;
     
-    float noteInHertz;
+    
 };

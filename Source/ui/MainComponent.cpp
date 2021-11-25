@@ -9,13 +9,23 @@
 #include "MainComponent.h"
 
 //==============================================================================
-MainComponent::MainComponent (Audio& a) :   audio (a)
+MainComponent::MainComponent (Audio& a) :   Thread("CounterThread"),
+                                            audio (a)
 {
     setSize (600, 400);
     addAndMakeVisible(gainSlider);
     gainSlider.setBounds(120, 30, 110, 30);
     gainSlider.setSliderStyle(Slider::SliderStyle::LinearBar);
     gainSlider.addListener(this);
+    
+    
+    addAndMakeVisible(butthread);
+    butthread.setBounds(250, 30, 110, 30);
+    butthread.addListener(this);
+    
+    
+    state = sleeping;
+    
 }
 
 MainComponent::~MainComponent()
@@ -73,4 +83,35 @@ void MainComponent::sliderValueChanged(Slider* slider)
     if (slider == &gainSlider)
         audio.sineOsc.setGain(gainSlider.getValue()/10);
         
+}
+
+void MainComponent::run()
+{
+    int count = 0;
+    
+    while (! threadShouldExit())
+    {
+        std::cout << count << std::endl;
+        count++;
+        wait(1000);
+    }
+}
+
+void MainComponent::buttonClicked(Button *button)
+{
+    
+    if (button == &butthread)
+    {
+        if (state == sleeping)
+        {
+            startThread();
+            state = active;
+        }
+        else
+        {
+            stopThread(10);
+            state = sleeping;
+        }
+        
+    }
 }

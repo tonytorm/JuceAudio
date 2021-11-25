@@ -13,6 +13,7 @@
 
 
 
+
 float SineOscillator::nextSample()
 {
     phasePosition += phaseIncrement.load();

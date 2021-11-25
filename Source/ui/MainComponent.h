@@ -18,7 +18,9 @@
 */
 class MainComponent   : public Component,
                         public MenuBarModel,
-                        public Slider::Listener 
+                        public Slider::Listener,
+                        public Button::Listener,
+                        public Thread
 {
 public:
     //==============================================================================
@@ -32,21 +34,28 @@ public:
     void resized() override;
     void paint (Graphics&) override;
     void sliderValueChanged(Slider* slider) override;
+    void run() override;
+    void buttonClicked (Button* button) override;
     
     //MenuBarEnums/MenuBarModel=====================================================
     enum Menus
     {
         FileMenu = 0,
-        
         NumMenus
     };
     
     enum FileMenuItems
     {
         AudioPrefs = 1,
-        
         NumFileItems
     };
+    
+    enum ButtonState
+    {
+        sleeping,
+        active
+    };
+    
     StringArray getMenuBarNames() override;
     PopupMenu getMenuForIndex (int topLevelMenuIndex, const String& menuName) override;
     void menuItemSelected (int menuItemID, int topLevelMenuIndex) override;
@@ -54,6 +63,8 @@ public:
 private:
     Audio& audio;
     Slider gainSlider;
+    TextButton butthread;
+    ButtonState state;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
