@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "../audio/Audio.h"
+#include "Counter.hpp"
 
 //==============================================================================
 /*
@@ -20,7 +21,8 @@ class MainComponent   : public Component,
                         public MenuBarModel,
                         public Slider::Listener,
                         public Button::Listener,
-                        public Thread
+                        public Counter::Listener
+                        
 {
 public:
     //==============================================================================
@@ -34,8 +36,8 @@ public:
     void resized() override;
     void paint (Graphics&) override;
     void sliderValueChanged(Slider* slider) override;
-    void run() override;
     void buttonClicked (Button* button) override;
+    void counterChanged (unsigned int count) override;
     
     //MenuBarEnums/MenuBarModel=====================================================
     enum Menus
@@ -65,7 +67,7 @@ private:
     Slider gainSlider;
     TextButton butthread;
     ButtonState state;
-
+    Counter counterA;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

@@ -9,8 +9,7 @@
 #include "MainComponent.h"
 
 //==============================================================================
-MainComponent::MainComponent (Audio& a) :   Thread("CounterThread"),
-                                            audio (a)
+MainComponent::MainComponent (Audio& a) : audio (a)
 {
     setSize (600, 400);
     addAndMakeVisible(gainSlider);
@@ -25,6 +24,7 @@ MainComponent::MainComponent (Audio& a) :   Thread("CounterThread"),
     
     
     state = sleeping;
+    counterA.setListener(this);
     
 }
 
@@ -85,17 +85,7 @@ void MainComponent::sliderValueChanged(Slider* slider)
         
 }
 
-void MainComponent::run()
-{
-    int count = 0;
-    
-    while (! threadShouldExit())
-    {
-        std::cout << count << std::endl;
-        count++;
-        wait(1000);
-    }
-}
+
 
 void MainComponent::buttonClicked(Button *button)
 {
@@ -104,14 +94,19 @@ void MainComponent::buttonClicked(Button *button)
     {
         if (state == sleeping)
         {
-            startThread();
+            counterA.startCounter();
             state = active;
         }
         else
         {
-            stopThread(10);
+            counterA.stopCounter(10);
             state = sleeping;
         }
         
     }
+}
+
+void MainComponent::counterChanged(unsigned int count)
+{
+    std::cout << count << std::endl;
 }
