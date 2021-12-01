@@ -9,7 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "../audio/Audio.h"
+
 
 
 class Counter : public Thread

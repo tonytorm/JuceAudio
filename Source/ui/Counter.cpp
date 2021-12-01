@@ -30,11 +30,18 @@ void Counter::run()
     while (! threadShouldExit())
     {
         if (listener != nullptr)
+        {
+            
+            count++;
             listener->counterChanged(count);
-        count++;
-        wait(100);
+            wait(200);
+        
+        
+        }
     }
 }
+
+
 
 void Counter::setListener(Listener *newListener)
 {
